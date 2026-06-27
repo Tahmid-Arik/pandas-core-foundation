@@ -29,3 +29,12 @@ This script maps out the low-level data and axis alignment mechanics in pandas, 
 * **2D Boundary Constraints:** Multi-axis alignment (handling dropped states vs introducing new structural nodes filled with `NaN`).
 * **The `.loc` Exception Guardrail:** Verifying that while `.loc` offers high-speed index reordering, it enforces a strict runtime constraint (raising a `KeyError` if non-existent keys are requested), unlike `reindex()`.
 *
+## ✂️ Section 5.2: Essential Functionality (Part 2 - Dropping Entries)
+
+This module handles dimensional reduction and safe data pruning across multiple axes inside pandas structures without mutating the baseline memory profile.
+
+### Key Architectural Concepts Covered:
+* **Immutability Safety:** Deep dive into how `drop()` creates filtered structural views/copies rather than executing immediate hard deletes in the parent memory address space.
+* **Row Exclusions (`axis=0`):** Pruning custom indexing rows through sequential arrays without breaking surrounding index-label mappings.
+* **Column Pruning (`axis=1` / `columns`):** High-speed vertical slicing. Compared modern keyword routing (`columns=["label"]`) with legacy NumPy-style dimension targeting (`axis="columns"`).
+*
